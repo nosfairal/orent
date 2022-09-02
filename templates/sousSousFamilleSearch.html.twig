@@ -1,0 +1,27 @@
+{% extends "base.html.twig" %}
+{% block body %}
+	{% for message in app.flashes('alert') %}
+		<div class="alert alert-danger">{{ message }}</div>
+	{% endfor %}
+	<div class="input-group" id="searchInput">
+		{{ form_start(form) }}
+		<div class="col">
+			{{ form_row(form.string) }}
+			{{ form_row(form.submit) }}
+		</div>
+		{{ form_end(form) }}
+		{#<input class="form-control" type="search" placeholder="Rechercher">
+																																																						                            <button class="btn" type="submit"><i class="bi bi-search"></i></button>#}
+	</div>
+	<h3>Sous famille :
+		{% if ssFamille is defined %}
+			{{ ssFamille[0].sousFamille }}
+		{% endif %}
+	</h3>
+	<h3>Famille :
+		{% if ssFamille is defined %}
+			{{ ssFamille[0].sousFamille.famille }}
+		{% endif %}
+	</h3>
+
+{% endblock %}
